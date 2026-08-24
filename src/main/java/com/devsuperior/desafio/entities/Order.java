@@ -1,6 +1,9 @@
 package com.devsuperior.desafio.entities;
 
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
+import jakarta.persistence.OneToMany;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +20,10 @@ public class Order {
     private Long id;
 
     private Instant moment;
-
+    
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items = new HashSet<>();
+    
     public Order() {
     }
 
@@ -36,5 +42,8 @@ public class Order {
 
     public void setMoment(Instant moment) {
         this.moment = moment;
+    }
+    public Set<OrderItem> getItems() {
+        return items;
     }
 }

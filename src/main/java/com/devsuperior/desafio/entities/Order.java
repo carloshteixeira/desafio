@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,15 +23,20 @@ public class Order {
 
     private Instant moment;
     
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private User client;
+    
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItem> items = new HashSet<>();
     
     public Order() {
     }
 
-    public Order(Long id, Instant moment) {
+    public Order(Long id, Instant moment, User client) {
         this.id = id;
         this.moment = moment;
+        this.client = client;
     }
 
     public Long getId() {
@@ -45,5 +52,12 @@ public class Order {
     }
     public Set<OrderItem> getItems() {
         return items;
+    }
+    public User getClient() {
+        return client;
+    }
+
+    public void setClient(User client) {
+        this.client = client;
     }
 }

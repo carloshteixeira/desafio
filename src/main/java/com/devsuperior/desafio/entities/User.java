@@ -9,6 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 
 
 	@Entity
@@ -25,6 +28,18 @@ import jakarta.persistence.Table;
 		
 		@OneToMany(mappedBy = "client")
 		private Set<Order> orders = new HashSet<>();
+		
+		@ManyToMany
+		@JoinTable(
+		    name = "tb_user_role",
+		    joinColumns = @JoinColumn(name = "user_id"),
+		    inverseJoinColumns = @JoinColumn(name = "role_id")
+		)
+		private Set<Role> roles = new HashSet<>();
+		
+		public Set<Role> getRoles() {
+		    return roles;
+		}
 		
 		public User() {
 		}

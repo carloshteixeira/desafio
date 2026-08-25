@@ -24,3 +24,10 @@ INSERT INTO tb_user (name, email, phone, password) VALUES ('Alex Green', 'alex@g
 INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
+
+INSERT INTO tb_order (moment, client_id) VALUES (TIMESTAMP WITH TIME ZONE '2026-08-25 18:00:00+00', 2);
+
+INSERT INTO tb_order_item (order_id, product_id, quantity, price) VALUES (1, 1, 2, 90.50);
+INSERT INTO tb_order_item (order_id, product_id, quantity, price) VALUES (1, 2, 1, 2190.00);
+
+INSERT INTO tb_payment (moment, order_id) VALUES (TIMESTAMP WITH TIME ZONE '2026-08-25 18:05:00+00', 1);

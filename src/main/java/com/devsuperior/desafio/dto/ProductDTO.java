@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.devsuperior.desafio.entities.Category;
 import com.devsuperior.desafio.entities.Product;
-
 public class ProductDTO {
 
     private Long id;

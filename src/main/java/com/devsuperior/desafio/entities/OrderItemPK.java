@@ -1,6 +1,7 @@
 package com.devsuperior.desafio.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
@@ -34,11 +35,32 @@ public class OrderItemPK implements Serializable {
     public Product getProduct() {
         return product;
     }
+
     public void setOrder(Order order) {
         this.order = order;
     }
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(order, product);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        OrderItemPK other = (OrderItemPK) obj;
+
+        return Objects.equals(order, other.order)
+                && Objects.equals(product, other.product);
     }
 }

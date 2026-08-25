@@ -3,6 +3,7 @@ package com.devsuperior.desafio.config;
 import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,12 +17,22 @@ public class SecurityConfig {
 
         http
             .authorizeHttpRequests(auth -> auth
+
+                // H2 Console
                 .requestMatchers(PathRequest.toH2Console()).permitAll()
+
+                // Produtos públicos
+                .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
+
+                // Produtos - somente ADMIN
+                .requestMatchers(HttpMethod.POST, "/products/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/products/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/products/**").hasRole("ADMIN")
+
+                // Demais endpoints precisam de autenticação
                 .anyRequest().authenticated()
             )
-            .csrf(csrf -> csrf
-                .ignoringRequestMatchers(PathRequest.toH2Console())
-            )
+            .csrf(csrf -> csrf.disable())
             .headers(headers -> headers
                 .frameOptions(frame -> frame.sameOrigin())
             );

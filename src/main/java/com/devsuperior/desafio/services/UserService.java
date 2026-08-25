@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,12 @@ import com.devsuperior.desafio.projections.UserDetailsProjection;
 import com.devsuperior.desafio.repositories.UserRepository;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
 
+    @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
 
@@ -32,7 +34,9 @@ public class UserService {
                 projection.getUsername(),
                 projection.getPassword(),
                 Collections.singleton(
-                        new SimpleGrantedAuthority(projection.getAuthority())
+                        new SimpleGrantedAuthority(
+                                projection.getAuthority()
+                        )
                 )
         );
     }

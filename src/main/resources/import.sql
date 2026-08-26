@@ -2,11 +2,11 @@ INSERT INTO tb_category (name) VALUES ('Livros');
 INSERT INTO tb_category (name) VALUES ('Eletrônicos');
 INSERT INTO tb_category (name) VALUES ('Computadores');
 
-INSERT INTO tb_product (name, description, price, img_url) VALUES ('The Lord of the Rings', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 90.50, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg');
-INSERT INTO tb_product (name, description, price, img_url) VALUES ('Smart TV', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2190.00, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/2-big.jpg');
-INSERT INTO tb_product (name, description, price, img_url) VALUES ('Macbook Pro', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1250.00, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/3-big.jpg');
-INSERT INTO tb_product (name, description, price, img_url) VALUES ('PC Gamer', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1200.00, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg');
-INSERT INTO tb_product (name, description, price, img_url) VALUES ('Rails for Dummies', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 100.99, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/5-big.jpg');
+INSERT INTO tb_product (name, description, price, img_url, date) VALUES ('The Lord of the Rings', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 90.50, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg', TIMESTAMP WITH TIME ZONE '2026-08-01 10:00:00+00');
+INSERT INTO tb_product (name, description, price, img_url, date) VALUES ('Smart TV', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2190.00, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/2-big.jpg', TIMESTAMP WITH TIME ZONE '2026-08-02 10:00:00+00');
+INSERT INTO tb_product (name, description, price, img_url, date) VALUES ('Macbook Pro', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1250.00, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/3-big.jpg', TIMESTAMP WITH TIME ZONE '2026-08-03 10:00:00+00');
+INSERT INTO tb_product (name, description, price, img_url, date) VALUES ('PC Gamer', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1200.00, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg', TIMESTAMP WITH TIME ZONE '2026-08-04 10:00:00+00');
+INSERT INTO tb_product (name, description, price, img_url, date) VALUES ('Rails for Dummies', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 100.99, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/5-big.jpg', TIMESTAMP WITH TIME ZONE '2026-08-05 10:00:00+00');
 
 INSERT INTO tb_product_category (product_id, category_id) VALUES (1, 1);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (2, 2);

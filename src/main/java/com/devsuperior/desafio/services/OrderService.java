@@ -1,6 +1,5 @@
 package com.devsuperior.desafio.services;
 
-
 import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +36,8 @@ public class OrderService {
 
         Order entity = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Resource not found"));
+
+        authService.validateSelfOrAdmin(entity.getClient().getId());
 
         return new OrderDTO(entity);
     }

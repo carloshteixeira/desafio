@@ -1,6 +1,7 @@
 package com.devsuperior.desafio.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,18 @@ public class AuthService {
         }
 
         return user;
+    }
+
+    public void validateSelfOrAdmin(Long userId) {
+
+        User user = authenticated();
+
+        boolean isAdmin = user.getRoles()
+                .stream()
+                .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"));
+
+        if (!user.getId().equals(userId) && !isAdmin) {
+            throw new AccessDeniedException("Access denied");
+        }
     }
 }

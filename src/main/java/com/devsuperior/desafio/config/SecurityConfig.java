@@ -42,6 +42,9 @@ public class SecurityConfig {
                 // Produtos públicos
                 .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
 
+                // Categorias públicas
+                .requestMatchers(HttpMethod.GET, "/categories").permitAll()
+
                 // Produtos - somente ADMIN
                 .requestMatchers(HttpMethod.POST, "/products/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/products/**").hasRole("ADMIN")
